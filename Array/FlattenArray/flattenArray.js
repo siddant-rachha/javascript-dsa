@@ -14,3 +14,19 @@ const flattenArray = (nestedArr) => {
 };
 
 console.log(flattenArray(input));
+
+// optimized way
+const flattenArray2 = (nestedArr, result = []) => {
+  for (let i = 0; i < nestedArr.length; i++) {
+    if (Array.isArray(nestedArr[i])) {
+      flattenArray2(nestedArr[i], result);
+    } else {
+      result.push(nestedArr[i]);
+    }
+  }
+  return result;
+};
+
+console.log(flattenArray2(input));
+// Time: O(n)
+// Space: O(n)
